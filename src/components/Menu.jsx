@@ -138,8 +138,8 @@ const Menu = ({ darkMode, setDarkMode, open, handleClose }) => {
           
         </Item>
         <Hr />
-       {!currentUser && <>
-        <Login>
+       {!currentUser && open && <>
+        <Login className="w-[20ch]">
           Sign in to like videos, comment and subscribe.
           <Link to="signin" style={{ textDecoration: "none" }}>
             <Button>
