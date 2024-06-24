@@ -4,10 +4,11 @@ import { Navbar } from "./components/Navbar";
 import { darkTheme, lightTheme } from "./utils/Theme";
 import { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
-import { Video } from "./pages/Video";
+import Video from "./pages/Video";
 import { Home } from "./pages/Home";
 import Signin from "./pages/Signin";
 import Search from "./pages/Search";
+import React from "react";
 
 const Container = styled.div`
   position: relative;
