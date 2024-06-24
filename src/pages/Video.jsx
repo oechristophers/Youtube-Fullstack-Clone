@@ -78,7 +78,6 @@ const Subscribe = styled.button`
   background-color: white;
   font-weight: 500;
   border: none;
-  border-radius: 3px;
   height: max-content;
   padding: 10px 20px;
   cursor: pointer;
@@ -89,7 +88,6 @@ const Subscribed = styled.button`
   background-color: red;
   font-weight: 500;
   border: none;
-  border-radius: 3px;
   height: max-content;
   padding: 10px 20px;
   cursor: pointer;
@@ -243,9 +241,9 @@ const Video = () => {
                 </ChannelDetail>
               </ChannelInfo>
               {subscribedUsers ? (
-                <Subscribed onClick={handleSub}>SUBSCRIBED</Subscribed>
+                <Subscribed onClick={handleSub} className="rounded-full">SUBSCRIBED</Subscribed>
               ) : (
-                <Subscribe onClick={handleSub}>SUBSCRIBE</Subscribe>
+                <Subscribe onClick={handleSub} className="rounded-full">SUBSCRIBE</Subscribe>
               )}
               <Buttons>
                 <Button className="rounded-full w-36 justify-center h-10 gap-10">
