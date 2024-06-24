@@ -23,27 +23,19 @@ const connect = () => {
 };
 
 app.use(cookieParser());
-const allowedOrigins = [
-  'https://video-892c6.web.app',
-  'http://localhost:5173', // Add other allowed origins here
-];
+const allowedOrigins = ['https://video-892c6.web.app', 'http://localhost:5173'];
 
+// CORS middleware options
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
 };
-
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
@@ -64,3 +56,5 @@ app.listen(8800, () => {
   connect(); /*this is the name of the connect function above*/
   console.log("Connected to Server!");
 });
+
+
