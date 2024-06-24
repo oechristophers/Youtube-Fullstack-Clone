@@ -96,18 +96,18 @@ const DropdownMenu = styled.div`
   gap: 10px;
 `;
 
-const DropdownItem = styled.button`
-  padding: 10px;
-  background: none;
-  border: none;
-  color: ${({ theme }) => theme.text};
-  cursor: pointer;
-  text-align: left;
+// const DropdownItem = styled.button`
+//   padding: 10px;
+//   background: none;
+//   border: none;
+//   color: ${({ theme }) => theme.text};
+//   cursor: pointer;
+//   text-align: left;
 
-  &:hover {
-    background-color: ${({ theme }) => theme.soft};
-  }
-`;
+//   &:hover {
+//     background-color: ${({ theme }) => theme.soft};
+//   }
+// `;
 
 const Avatar = styled.img`
   width: 32px;
