@@ -2161,9 +2161,7 @@ display:${e=>e.type==="sm"&&"none"} ;
   gap: 24px;
 `,YM=I.div`
   flex: 5;
-`,ZM=I.div`
-
-`,e6=I.h1`
+`,ZM=I.div``,e6=I.h1`
   font-size: 18px;
   font-weight: 400;
   margin-top: 20px;
@@ -2172,7 +2170,7 @@ display:${e=>e.type==="sm"&&"none"} ;
   align-items: center;
   justify-content: space-between;
   margin: 1px 0px;
-  background-color:${({theme:e})=>e.soft};
+  background-color: ${({theme:e})=>e.soft};
 `,n6=I.span`
   color: ${({theme:e})=>e.text};
 `,r6=I.div`
@@ -2184,7 +2182,7 @@ display:${e=>e.type==="sm"&&"none"} ;
   align-items: center;
   gap: 5px;
   cursor: pointer;
-  background-color:${({theme:e})=>e.soft} ;
+  background-color: ${({theme:e})=>e.soft};
 `,iv=I.hr`
   margin: 15px 0px;
   border: 0.5px solid ${({theme:e})=>e.soft};
@@ -2196,12 +2194,10 @@ display:${e=>e.type==="sm"&&"none"} ;
   display: flex;
   gap: 20px;
 `,s6=I.button`
-  color:${({theme:e})=>!e.text} ;
-  /* background-color: ${({theme:e})=>e.bg}; */
+  color: ${({theme:e})=>!e.text};
   background-color: white;
   font-weight: 500;
   border: none;
-  border-radius: 3px;
   height: max-content;
   padding: 10px 20px;
   cursor: pointer;
@@ -2210,7 +2206,6 @@ display:${e=>e.type==="sm"&&"none"} ;
   background-color: red;
   font-weight: 500;
   border: none;
-  border-radius: 3px;
   height: max-content;
   padding: 10px 20px;
   cursor: pointer;
@@ -2225,7 +2220,7 @@ display:${e=>e.type==="sm"&&"none"} ;
 `,c6=I.span`
   font-weight: 500;
 `,d6=I.span`
-   color: ${({theme:e})=>e.textSoft};
+  color: ${({theme:e})=>e.textSoft};
 `,f6=I.div`
   margin-top: 5px;
   margin-bottom: 20px;
@@ -2235,11 +2230,10 @@ display:${e=>e.type==="sm"&&"none"} ;
   font-size: 15px;
   color: ${({theme:e})=>e.text};
 `,p6=I.video`
-  max-height:720px;
+  max-height: 720px;
   width: 100%;
-  object-fit: cover; 
-  
-`,m6=()=>{var c,d,f,v,g,y;const{currentUser:e}=vs(w=>w.user),{currentVideo:t}=vs(w=>w.video),n=Bp(),r=ti().pathname.split("/")[2],[i,o]=k.useState({});k.useEffect(()=>{(async()=>{var m;try{console.log(e==null?void 0:e.subscribedUsers),console.log((m=e==null?void 0:e.user)==null?void 0:m.subscribedUsers);const h=await z.get(`http://localhost:8800/api/videos/find/${r}`),p=await z.get(`http://localhost:8800/api/users/find/${h.data.userId}`);o(p.data),n(LM(h.data))}catch{}})()},[r,n]);const s=async()=>{try{const w=localStorage.getItem("access_token"),m={};w&&(m.headers={Authorization:`Bearer ${w}`}),await z.put(`http://localhost:8800/api/users/like/${t._id}`,{},m),n(MM(e._id))}catch(w){console.error("Error liking the video:",w)}},a=async()=>{try{const w=localStorage.getItem("access_token"),m={};w&&(m.headers={Authorization:`Bearer ${w}`}),await z.put(`http://localhost:8800/api/users/dislike/${t._id}`,{},m),n(UM(e._id))}catch(w){console.error("Error disliking the video:",w)}},l=async()=>{var w,m,h;try{const p=localStorage.getItem("access_token"),S={};p&&(S.headers={Authorization:`Bearer ${p}`});const x=(w=e==null?void 0:e.subscribedUsers)!=null&&w.includes(i._id)||(h=(m=e==null?void 0:e.user)==null?void 0:m.subscribedUsers)!=null&&h.includes(i._id)?`http://localhost:8800/api/users/unsub/${i._id}`:`http://localhost:8800/api/users/sub/${i._id}`;await z.put(x,{},S),n(gL(i._id))}catch(p){console.error("Error subscribing/unsubscribing:",p)}},u=((c=e==null?void 0:e.subscribedUsers)==null?void 0:c.includes(i._id))||((f=(d=e==null?void 0:e.user)==null?void 0:d.subscribedUsers)==null?void 0:f.includes(i._id));return _.jsxs(JM,{className:"lg:flex p-6 lg:p-0",children:[_.jsxs(YM,{className:"mb-4",children:[_.jsx(ZM,{children:_.jsx(p6,{src:t.videoUrl,controls:!0})}),_.jsx(e6,{children:t.title}),_.jsxs(i6,{children:[_.jsxs(o6,{className:"",children:[_.jsx(l6,{src:i.name,className:""}),_.jsxs(u6,{className:"",children:[_.jsx(c6,{children:i.name}),_.jsxs(f6,{children:[i.subscribers," Subscribers"]})]})]}),u?_.jsx(a6,{onClick:l,children:"SUBSCRIBED"}):_.jsx(s6,{onClick:l,children:"SUBSCRIBE"}),_.jsxs(r6,{children:[_.jsxs(Co,{className:"rounded-full w-36 justify-center h-10 gap-10",children:[_.jsxs(Co,{onClick:s,className:"",children:[(v=t.likes)!=null&&v.includes(e._id)?_.jsx(SE,{}):_.jsx(gE,{})," ",(g=t.likes)==null?void 0:g.length]}),_.jsx(d6,{className:"text-[2.7rem] font-thin pb-1 ",children:"|"}),_.jsxs(Co,{onClick:a,children:[(y=t.dislikes)!=null&&y.includes(e._id)?_.jsx(wE,{}):_.jsx(yE,{})," "]})]}),_.jsxs(Co,{className:"rounded-full w-24 justify-center h-10 gap-10",children:[_.jsx(vE,{})," Share"]}),_.jsxs(Co,{className:"rounded-full w-24 justify-center h-10 gap-10",children:[_.jsx(_E,{})," Save"]})]})]}),_.jsx(iv,{}),_.jsxs(t6,{className:"rounded-md justify-center p-6",children:[_.jsxs(n6,{children:[t.views," views • ",Pm(t.createdAt)]}),_.jsx(h6,{className:" w-[100%]",children:t.desc})]}),_.jsx(iv,{}),_.jsx(DM,{videoId:t._id})]}),_.jsx(QM,{type:"sm",tags:t.tags,className:""})]})},g6=I.div`
+  object-fit: cover;
+`,m6=()=>{var c,d,f,v,g,y;const{currentUser:e}=vs(w=>w.user),{currentVideo:t}=vs(w=>w.video),n=Bp(),r=ti().pathname.split("/")[2],[i,o]=k.useState({});k.useEffect(()=>{(async()=>{var m;try{console.log(t),console.log(e==null?void 0:e.subscribedUsers),console.log((m=e==null?void 0:e.user)==null?void 0:m.subscribedUsers);const h=await z.get(`http://localhost:8800/api/videos/find/${r}`),p=await z.get(`http://localhost:8800/api/users/find/${h.data.userId}`);o(p.data),n(LM(h.data))}catch(h){console.error("Error fetching data:",h)}})()},[r,n]);const s=async()=>{try{const w=localStorage.getItem("access_token"),m={};w&&(m.headers={Authorization:`Bearer ${w}`}),await z.put(`http://localhost:8800/api/users/like/${t._id}`,{},m),n(MM(e._id))}catch(w){console.error("Error liking the video:",w)}},a=async()=>{try{const w=localStorage.getItem("access_token"),m={};w&&(m.headers={Authorization:`Bearer ${w}`}),await z.put(`http://localhost:8800/api/users/dislike/${t._id}`,{},m),n(UM(e._id))}catch(w){console.error("Error disliking the video:",w)}},l=async()=>{var w,m,h;try{const p=localStorage.getItem("access_token"),S={};p&&(S.headers={Authorization:`Bearer ${p}`});const x=(w=e==null?void 0:e.subscribedUsers)!=null&&w.includes(i._id)||(h=(m=e==null?void 0:e.user)==null?void 0:m.subscribedUsers)!=null&&h.includes(i._id)?`http://localhost:8800/api/users/unsub/${i._id}`:`http://localhost:8800/api/users/sub/${i._id}`;await z.put(x,{},S),n(gL(i._id))}catch(p){console.error("Error subscribing/unsubscribing:",p)}},u=((c=e==null?void 0:e.subscribedUsers)==null?void 0:c.includes(i._id))||((f=(d=e==null?void 0:e.user)==null?void 0:d.subscribedUsers)==null?void 0:f.includes(i._id));return _.jsxs(JM,{className:"lg:flex p-6 lg:p-0",children:[_.jsxs(YM,{className:"mb-4",children:[_.jsx(ZM,{children:t?_.jsx(p6,{src:t.videoUrl,controls:!0}):_.jsx("p",{children:"Loading..."})}),t&&_.jsxs(_.Fragment,{children:[_.jsx(e6,{children:t.title}),_.jsxs(i6,{children:[_.jsxs(o6,{className:"",children:[_.jsx(l6,{src:i.img,className:""}),_.jsxs(u6,{className:"",children:[_.jsx(c6,{children:i.name}),_.jsxs(f6,{children:[i.subscribers," Subscribers"]})]})]}),u?_.jsx(a6,{onClick:l,className:"rounded-full",children:"SUBSCRIBED"}):_.jsx(s6,{onClick:l,className:"rounded-full",children:"SUBSCRIBE"}),_.jsxs(r6,{children:[_.jsxs(Co,{className:"rounded-full w-36 justify-center h-10 gap-10",children:[_.jsxs(Co,{onClick:s,className:"",children:[(v=t.likes)!=null&&v.includes(e._id)?_.jsx(SE,{}):_.jsx(gE,{})," ",(g=t.likes)==null?void 0:g.length]}),_.jsx(d6,{className:"text-[2.7rem] font-thin pb-1",children:"|"}),_.jsxs(Co,{onClick:a,children:[(y=t.dislikes)!=null&&y.includes(e._id)?_.jsx(wE,{}):_.jsx(yE,{})," "]})]}),_.jsxs(Co,{className:"rounded-full w-24 justify-center h-10 gap-10",children:[_.jsx(vE,{})," Share"]}),_.jsxs(Co,{className:"rounded-full w-24 justify-center h-10 gap-10",children:[_.jsx(_E,{})," Save"]})]})]}),_.jsx(iv,{}),_.jsxs(t6,{className:"rounded-md justify-center p-6",children:[_.jsxs(n6,{children:[t.views," views • ",Pm(t.createdAt)]}),_.jsx(h6,{className:" w-[100%]",children:t.desc})]}),_.jsx(iv,{}),_.jsx(DM,{videoId:t._id})]})]}),t&&_.jsx(QM,{type:"sm",tags:t.tags,className:""})]})},g6=I.div`
  background-color: ${({theme:e})=>e.bg};
 `,pd=({type:e,requiresAuth:t})=>{const[n,r]=k.useState([]);return k.useEffect(()=>{(async()=>{const o={};if(t){const a=localStorage.getItem("access_token");o.headers={Authorization:`Bearer ${a}`}}const s=await z.get(`http://localhost:8800/api/videos/${e}`,o);r(s.data)})()},[e,t]),_.jsx(g6,{className:"grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 ",children:n.map(i=>_.jsx(Am,{video:i,className:""},i._id))})},y6=I.div`
   display: flex;
