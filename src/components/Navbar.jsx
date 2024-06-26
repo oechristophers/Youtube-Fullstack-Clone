@@ -248,11 +248,11 @@ export const Navbar = ({handleOpen}) => {
                 <User ref={dropdownRef}>
                   <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
                   <Avatar
-                    src={currentUser.img}
+                    src={currentUser?.img || currentUser?.user?.img}
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     style={{ cursor: "pointer" }}
                   />
-                  {currentUser.name}
+                  {currentUser?.name || currentUser?.user?.name}
                   {dropdownOpen && (
                     <DropdownMenu>
                       <Logout />

@@ -119,7 +119,7 @@ const Signin = () => {
       localStorage.setItem("access_token", token);
       navigate("/")
       // Log the image URL from the response
-      console.log('User image URL:', response.data.img);
+      console.log('User image URL:', response.data.user.img);
     } catch (error) {
       console.error('Error during Google sign-in or backend request:', error);
       dispatch(loginFailure());

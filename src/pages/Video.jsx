@@ -220,6 +220,8 @@ const Video = () => {
     currentUser?.subscribedUsers?.includes(channel._id) ||
     currentUser?.user?.subscribedUsers?.includes(channel._id);
 
+    
+
   return (
     <Container className="lg:flex p-6 lg:p-0">
       <Content className="mb-4">
@@ -249,7 +251,7 @@ const Video = () => {
               <Buttons>
                 <Button className="rounded-full w-36 justify-center h-10 gap-10">
                   <Button onClick={handleLike} className="">
-                    {currentVideo.likes?.includes(currentUser._id) ? (
+                    {currentVideo.likes?.includes(currentUser?._id) || currentVideo.dislikes?.includes(currentUser?.user?._id) ? (
                       <ThumbUpIcon />
                     ) : (
                       <ThumbUpOutlinedIcon />
@@ -258,7 +260,7 @@ const Video = () => {
                   </Button>
                   <Span className="text-[2.7rem] font-thin pb-1">|</Span>
                   <Button onClick={handleDislike}>
-                    {currentVideo.dislikes?.includes(currentUser._id) ? (
+                    {currentVideo.dislikes?.includes(currentUser?._id) || currentVideo.dislikes?.includes(currentUser?.user?._id) ? (
                       <ThumbDownIcon />
                     ) : (
                       <ThumbDownOffAltOutlinedIcon />

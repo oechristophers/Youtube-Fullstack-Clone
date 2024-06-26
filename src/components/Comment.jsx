@@ -134,7 +134,7 @@ const Comment = ({ comment, currentUser, comments, setComments }) => {
             </Text>
         </Details>
 
-        {currentUser._id &&
+        {currentUser?._id ||currentUser?.user?.id &&
       <Button className='pb-2 ml-auto' ref={dropdownRef}>
         <StyledMoreButton onClick={() => setDropdownOpen((prev) => !prev)} />
         {dropdownOpen && (

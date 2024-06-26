@@ -86,7 +86,7 @@ const Comments = ({ videoId }) => {
   return (
     <Container>
       <NewComment>
-        <Avatar src={currentUser.img} />
+        <Avatar src={currentUser?.img ||currentUser?.user?.img} />
         <form onSubmit={handleCommentSubmit} style={{ width: '100%' }}>
           <Input
             placeholder="Add a comment..."
