@@ -19,4 +19,12 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIDEO_892C6 }}
           projectId: video-892c6
-          firebaseConfig: ${{ secrets.FIREBASE_CONFIG }}
+          firebaseConfig: |
+            {
+              "apiKey": "${{ secrets.VITE_REACT_APP_APIKEY }}",
+              "authDomain": "${{ secrets.VITE_REACT_APP_AUTHDOMAIN }}",
+              "projectId": "${{ secrets.VITE_REACT_APP_PROJECTID }}",
+              "storageBucket": "${{ secrets.VITE_REACT_APP_STORAGEBUCKET }}",
+              "messagingSenderId": "${{ secrets.VITE_REACT_APP_MESSAGING_SENDERID }}",
+              "appId": "${{ secrets.VITE_REACT_APP_APPID }}"
+            }
