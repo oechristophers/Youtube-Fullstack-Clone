@@ -14,6 +14,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build
+      - name: Load environment variables
+        run: |
+          echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
+          # Repeat for other variables like AUTH_DOMAIN, etc.
+          echo "Loaded API_KEY=${{ secrets.API_KEY }}"
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
