@@ -15,6 +15,7 @@ import { subscription } from "../redux/userSlice";
 import Recommendations from "../components/Recommendations";
 import { format } from "timeago.js";
 
+//styled components from styled
 const Container = styled.div`
   gap: 24px;
 `;
