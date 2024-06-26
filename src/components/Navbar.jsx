@@ -66,7 +66,6 @@ const Button = styled.button`
   background-color: transparent;
   border: 1px solid #3ea6ff;
   color: #3ea6ff;
-  border-radius: 3px;
   font-weight: 500;
   cursor: pointer;
   display: flex;
@@ -262,7 +261,7 @@ export const Navbar = ({handleOpen}) => {
                 </User>
               ) : (
                 <Link to="signin" style={{ textDecoration: "none" }}>
-                  <Button>
+                  <Button className="rounded-full">
                     <AccountCircleOutlinedIcon />
                     SIGN IN
                   </Button>

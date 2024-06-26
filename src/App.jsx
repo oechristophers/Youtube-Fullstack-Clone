@@ -2,7 +2,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Menu from "./components/Menu";
 import { Navbar } from "./components/Navbar";
 import { darkTheme, lightTheme } from "./utils/Theme";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Video from "./pages/Video";
 import { Home } from "./pages/Home";
@@ -46,6 +46,14 @@ function App() {
 }
 
 const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark-mode');
+    } else {
+      document.documentElement.classList.remove('dark-mode');
+    }
+  }, [darkMode]);
   const location = useLocation();
   const shouldShowNav = !location.pathname.includes("/video");
 
@@ -55,18 +63,19 @@ const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
   return (
     <>
       
-          <div className={`w-[fit-content] absolute z-30 ${open ? 'block' : 'hidden'}`}>
-            <Menu open={open} setOpen={setOpen} handleClose={handleClose} darkMode={darkMode} setDarkMode={setDarkMode} />
-          </div>
-          <Navbar className="z-20" handleOpen={handleOpen} />
+      <div className={`w-[fit-content] max-h-screen fixed overflow-y-scroll z-30  ${open ? 'block' : 'hidden'}  `} >
+  <Menu open={open} setOpen={setOpen} handleClose={handleClose} darkMode={darkMode} setDarkMode={setDarkMode} className="h-max" />
+</div>
+
+          <Navbar className="z-20 " handleOpen={handleOpen} />
         
-      <Main className="md:flex min-h-screen">
+      <Main className="md:flex min-h-screen ">
         {shouldShowNav && (
-          <div className={`w-[fit-content] hidden ${open ? 'md:hidden' : 'md:block'}`}>
+          <div className={`w-[fit-content] md:fixed overflow-y-scroll hidden ${open ? 'md:hidden' : 'md:block'}`} >
             <Menu darkMode={darkMode} setDarkMode={setDarkMode} open={open}/>
           </div>
         )}
-        <Wrapper >
+        <Wrapper className="md:ml-[4.3rem]">
           <Routes>
             <Route path="/" element={<Home type="random" />} />
             <Route path="trends" element={<Home type="trend" />} />

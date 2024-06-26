@@ -68,7 +68,6 @@ const Button = styled.button`
   background-color: transparent;
   border: 1px solid #3ea6ff;
   color: #3ea6ff;
-  border-radius: 3px;
   font-weight: 500;
   margin-top: 10px;
   cursor: pointer;
@@ -89,7 +88,7 @@ const Menu = ({ darkMode, setDarkMode, open, handleClose }) => {
 
   
   return (
-    <Container>
+    <Container className="">
       <Wrapper>
         <div className={` ${open ? 'flex' : 'hidden'}`}>
       <Link
@@ -142,7 +141,7 @@ const Menu = ({ darkMode, setDarkMode, open, handleClose }) => {
         <Login className="w-[20ch]">
           Sign in to like videos, comment and subscribe.
           <Link to="signin" style={{ textDecoration: "none" }}>
-            <Button>
+            <Button className="rounded-full">
               <AccountCircleOutlinedIcon />
               SIGN IN
             </Button>

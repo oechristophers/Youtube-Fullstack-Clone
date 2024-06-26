@@ -8,6 +8,7 @@ const Container = styled.div`
 `;
 
 export const Home = ({ type, requiresAuth }) => {
+ 
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {

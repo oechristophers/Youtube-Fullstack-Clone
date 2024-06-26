@@ -1,3 +1,40 @@
+/* global.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Define default light mode colors */
+:root {
+    --scrollbar-track-bg: #f1f1f1;
+    --scrollbar-thumb-bg: #f1f1f1;
+    --scrollbar-thumb-hover-bg: #888;
+  }
+
+  .dark-mode {
+    --scrollbar-track-bg: #1f1e1e;
+    --scrollbar-thumb-bg: #1f1e1e;
+    --scrollbar-thumb-hover-bg: #444;
+  }
+  
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track-bg);
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb-bg);
+    border-radius: 2px;
+    max-height: 20px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover-bg);
+  }
+  

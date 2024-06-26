@@ -141,7 +141,7 @@ const Signin = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button onClick={handleLogin}>Sign in</Button>
+        <Button onClick={handleLogin} className="rounded-full">Sign in</Button>
         <Title>or</Title>
         <Button onClick={signInWithGoogle}>Signin with Google</Button>
         <Title>or</Title>
