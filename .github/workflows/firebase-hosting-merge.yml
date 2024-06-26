@@ -18,7 +18,15 @@ jobs:
             VITE_REACT_APP_PROJECTID: ${{ secrets.VITE_REACT_APP_PROJECTID }}
             VITE_REACT_APP_STORAGEBUCKET: ${{ secrets.VITE_REACT_APP_STORAGEBUCKET }}
             VITE_REACT_APP_MESSAGINGSENDERID: ${{ secrets.VITE_REACT_APP_MESSAGINGSENDERID }}
-            VITE_REACT_APP_APPID: ${{ secrets.VITE_REACT_APP_APPID }}
+            VITE_REACT_APP_APPID: ${{ secrets.VITE_REACT_APP_APPID }} 
+      - name: Debug Environment Variables
+        run: |
+          echo "Firebase API Key: $VITE_REACT_APP_APIKEY"
+          echo "Firebase Auth Domain: $VITE_REACT_APP_AUTHDOMAIN"
+          echo "Firebase Project ID: $VITE_REACT_APP_PROJECTID"
+          echo "Firebase Storage Bucket: $VITE_REACT_APP_STORAGEBUCKET"
+          echo "Firebase Messaging Sender ID: $VITE_REACT_APP_MESSAGINGSENDERID"
+          echo "Firebase App ID: $VITE_REACT_APP_APPID"      
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
