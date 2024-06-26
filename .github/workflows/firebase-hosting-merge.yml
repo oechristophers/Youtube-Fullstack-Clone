@@ -11,25 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
-        env:
-            VITE_REACT_APP_APIKEY: ${{ secrets.VITE_REACT_APP_APIKEY }}
-            VITE_REACT_APP_AUTHDOMAIN: ${{ secrets.VITE_REACT_APP_AUTHDOMAIN }}
-            VITE_REACT_APP_PROJECTID: ${{ secrets.VITE_REACT_APP_PROJECTID }}
-            VITE_REACT_APP_STORAGEBUCKET: ${{ secrets.VITE_REACT_APP_STORAGEBUCKET }}
-            VITE_REACT_APP_MESSAGINGSENDERID: ${{ secrets.VITE_REACT_APP_MESSAGINGSENDERID }}
-            VITE_REACT_APP_APPID: ${{ secrets.VITE_REACT_APP_APPID }} 
-      - name: Debug Environment Variables
-        run: |
-          echo "Firebase API Key: $VITE_REACT_APP_APIKEY"
-          echo "Firebase Auth Domain: $VITE_REACT_APP_AUTHDOMAIN"
-          echo "Firebase Project ID: $VITE_REACT_APP_PROJECTID"
-          echo "Firebase Storage Bucket: $VITE_REACT_APP_STORAGEBUCKET"
-          echo "Firebase Messaging Sender ID: $VITE_REACT_APP_MESSAGINGSENDERID"
-          echo "Firebase App ID: $VITE_REACT_APP_APPID"      
+      - run: npm ci && npm run build      
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_VIDEO_892C6 }}
           channelId: live
           projectId: video-892c6
+          firebaseConfig: ${{ secrets.FIREBASE_CONFIG }}
