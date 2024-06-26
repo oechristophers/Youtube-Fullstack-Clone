@@ -13,7 +13,10 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build    
       - name: Echo Firebase Config
-        run: echo '${{ secrets.FIREBASE_CONFIG }}'  
+        run: |
+          echo "Debugging Firebase Config"
+          echo "${{ secrets.FIREBASE_CONFIG }}" | base64 --decode || true
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
