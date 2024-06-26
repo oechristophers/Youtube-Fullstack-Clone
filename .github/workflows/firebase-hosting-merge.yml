@@ -12,10 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: npm ci && npm run build    
-      - name: Echo Firebase Config
-        run: echo "${{ secrets.FIREBASE_CONFIG }}"
-        env:
-         DEBUG: true
+      
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
