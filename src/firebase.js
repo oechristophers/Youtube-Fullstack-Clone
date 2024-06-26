@@ -1,17 +1,18 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {GoogleAuthProvider, getAuth} from "firebase/auth"
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCNWCElLYi1BWgSGcZS5lFxs9IGdqrCyak",
-  authDomain: "video-892c6.firebaseapp.com",
-  projectId: "video-892c6",
-  storageBucket: "video-892c6.appspot.com",
-  messagingSenderId: "355623722190",
-  appId: "1:355623722190:web:353c5f65e73e842400849f"
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGEID,
+  appId: process.env.REACT_APP_APPID
 };
 
 // Initialize Firebase
