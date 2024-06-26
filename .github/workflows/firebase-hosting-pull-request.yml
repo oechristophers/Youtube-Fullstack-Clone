@@ -16,9 +16,8 @@ jobs:
       - run: npm ci && npm run build
       - name: Load environment variables
         run: |
-          echo "API_KEY=${{ secrets.API_KEY }}" >> $GITHUB_ENV
-          # Repeat for other variables like AUTH_DOMAIN, etc.
-          echo "Loaded API_KEY=${{ secrets.API_KEY }}"
+          echo "API_KEY=${{ secrets.VITE_REACT_APP_APIKEY }}" >> $GITHUB_ENV
+          echo "Loaded API_KEY=${{ secrets.VITE_REACT_APP_APIKEY }}"
 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
