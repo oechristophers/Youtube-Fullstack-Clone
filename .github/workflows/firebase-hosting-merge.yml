@@ -19,6 +19,7 @@ jobs:
             VITE_REACT_APP_STORAGEBUCKET: ${{ secrets.VITE_REACT_APP_STORAGEBUCKET }}
             VITE_REACT_APP_MESSAGINGSENDERID: ${{ secrets.VITE_REACT_APP_MESSAGINGSENDERID }}
             VITE_REACT_APP_APPID: ${{ secrets.VITE_REACT_APP_APPID }} 
+            VITE_REACT_APP_SERVER_URL: ${{ secrets.VITE_REACT_APP_SERVER_URL }}
       - name: Debug Environment Variables
         run: |
           echo "Firebase API Key: $VITE_REACT_APP_APIKEY"
