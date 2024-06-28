@@ -146,10 +146,10 @@ const Video = () => {
         console.log(currentUser?.subscribedUsers);
         console.log(currentUser?.user?.subscribedUsers);
         const videoRes = await axios.get(
-          `http://localhost:8800/api/videos/find/${path}`
+          `${process.env.VITE_REACT_APP_SERVER_URL}/api/videos/find/${path}`
         );
         const channelRes = await axios.get(
-          `http://localhost:8800/api/users/find/${videoRes.data.userId}`
+          `${process.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${videoRes.data.userId}`
         );
         setChannel(channelRes.data);
         dispatch(fetchSuccess(videoRes.data));
@@ -168,7 +168,7 @@ const Video = () => {
         config.headers = { Authorization: `Bearer ${token}` };
       }
       await axios.put(
-        `http://localhost:8800/api/users/like/${currentVideo._id}`,
+        `${process.env.VITE_REACT_APP_SERVER_URL}/api/users/like/${currentVideo._id}`,
         {},
         config
       );
@@ -186,7 +186,7 @@ const Video = () => {
         config.headers = { Authorization: `Bearer ${token}` };
       }
       await axios.put(
-        `http://localhost:8800/api/users/dislike/${currentVideo._id}`,
+        `${process.env.VITE_REACT_APP_SERVER_URL}/api/users/dislike/${currentVideo._id}`,
         {},
         config
       );
@@ -206,8 +206,8 @@ const Video = () => {
       const actionUrl =
         currentUser?.subscribedUsers?.includes(channel._id) ||
         currentUser?.user?.subscribedUsers?.includes(channel._id)
-          ? `http://localhost:8800/api/users/unsub/${channel._id}`
-          : `http://localhost:8800/api/users/sub/${channel._id}`;
+          ? `${process.env.VITE_REACT_APP_SERVER_URL}/api/users/unsub/${channel._id}`
+          : `${process.env.VITE_REACT_APP_SERVER_URL}/api/users/sub/${channel._id}`;
 
       await axios.put(actionUrl, {}, config);
       dispatch(subscription(channel._id));

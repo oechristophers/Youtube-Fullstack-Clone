@@ -78,7 +78,7 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("http://localhost:8800/api/auth/signin", {
+      const res = await axios.post(`${process.env.VITE_REACT_APP_SERVER_URL}/api/auth/signin`, {
         name,
         password,
       });
@@ -108,7 +108,7 @@ const Signin = () => {
       // Log the user data to be sent to the backend
       // console.log('User data to be sent to backend:', userData);
   
-      const response = await axios.post('http://localhost:8800/api/auth/google', userData);
+      const response = await axios.post(`${process.env.VITE_REACT_APP_SERVER_URL}/api/auth/google`, userData);
   
       // Log the response from the backend
       // console.log('Backend response:', response.data);

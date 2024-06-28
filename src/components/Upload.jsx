@@ -148,7 +148,7 @@ export const Upload = ({ setOpen }) => {
     if (token) {
       config.headers = { Authorization: `Bearer ${token}` };
     }
-    const res = await axios.post("http://localhost:8800/api/videos", {...inputs, tags},config)
+    const res = await axios.post(`${process.env.VITE_REACT_APP_SERVER_URL}/api/videos`, {...inputs, tags},config)
     setOpen(false)
     res.status===200 && navigate(`/video/${res.data._id}`)
   }
