@@ -86,7 +86,7 @@ const Comment = ({ comment, currentUser, comments, setComments }) => {
 
   useEffect(() => {
     const fetchComment = async () => {
-      const res = await axios.get(`${process.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${comment.userId}`);
+      const res = await axios.get(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${comment.userId}`);
       setChannel(res.data)
     };
     fetchComment();
@@ -116,7 +116,7 @@ const Comment = ({ comment, currentUser, comments, setComments }) => {
       };
       setAuthToken(config);
 
-      await axios.delete(`${process.env.VITE_REACT_APP_SERVER_URL}/api/comments/${comment._id}`, config);
+      await axios.delete(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/comments/${comment._id}`, config);
       // Filter out the deleted comment from comments state
       const updatedComments = comments.filter((c) => c._id !== comment._id);
       setComments(updatedComments);

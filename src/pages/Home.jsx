@@ -20,7 +20,7 @@ export const Home = ({ type, requiresAuth }) => {
         config.headers = { Authorization: `Bearer ${token}` };
       }
       const res = await axios.get(
-        `${process.env.VITE_REACT_APP_SERVER_URL}/api/videos/${type}`,
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/videos/${type}`,
         config
       );
       setVideos(res.data);

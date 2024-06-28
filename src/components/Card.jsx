@@ -72,7 +72,7 @@ export const Card = ({type, video}) => {
 
   useEffect(() => {
     const fetchChannel = async () => {
-      const res = await axios.get(`${process.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${video.userId}`);
+      const res = await axios.get(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${video.userId}`);
       setChannel(res.data);
     };
     fetchChannel();

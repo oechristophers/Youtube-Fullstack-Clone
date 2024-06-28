@@ -14,7 +14,7 @@ const Search = () => {
 
     useEffect(()=>{
        const fetchVideos = async ()=>{
-        const res = await axios.get(`${process.env.VITE_REACT_APP_SERVER_URL}/api/videos/search${query}`)
+        const res = await axios.get(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/videos/search${query}`)
 
         setVideos(res.data)
        }

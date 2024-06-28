@@ -13,7 +13,7 @@ const Recommendations = ({ tags }) => {
 
     useEffect(() => {
     const fetchVideos = async () => {
-      const res = await axios.get(`${process.env.VITE_REACT_APP_SERVER_URL}/api/videos/tags?tags=${tags}`);
+      const res = await axios.get(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/videos/tags?tags=${tags}`);
       setVideos(res.data);
     };
     fetchVideos();
