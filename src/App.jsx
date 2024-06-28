@@ -75,7 +75,7 @@ const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
             <Menu darkMode={darkMode} setDarkMode={setDarkMode} open={open}/>
           </div>
         )}
-        <Wrapper className="md:ml-[4.3rem]">
+        <Wrapper >
           <Routes>
             <Route path="/" element={<Home type="random" />} />
             <Route path="trends" element={<Home type="trend" />} />

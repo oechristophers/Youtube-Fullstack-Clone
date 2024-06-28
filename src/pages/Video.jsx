@@ -223,11 +223,11 @@ const Video = () => {
     
 
   return (
-    <Container className="lg:flex p-6 lg:p-0">
-      <Content className="mb-4">
-        <VideoWrapper>
+    <Container className="lg:flex py-6 ">
+      <Content className="mb-4 ">
+        <VideoWrapper className=" w-[99vw] md:w-[100%] ml-[-5%] md:ml-[0]">
           {currentVideo ? (
-            <VideoFrame src={currentVideo.videoUrl} controls />
+            <VideoFrame src={currentVideo.videoUrl} controls className="  lg:w-[100%]" />
           ) : (
             <p>Loading...</p>
           )}
