@@ -72,56 +72,62 @@ const Signin = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/auth/signin`, {
-        name,
-        password,
-      });
+      const res = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/auth/signin`,
+        {
+          name,
+          password,
+        }
+      );
       dispatch(loginSuccess(res.data));
       const token = res.data.token;
       localStorage.setItem("access_token", token);
-      navigate("/")
+      navigate("/");
     } catch (err) {
       dispatch(loginFailure());
     }
   };
   const signInWithGoogle = async () => {
     dispatch(loginStart());
-  
+
     try {
       const result = await signInWithPopup(auth, provider);
-  
+
       // Log the user details received from Google
       // console.log('Google sign-in result:', result.user);
-  
+
       const userData = {
         name: result.user.displayName,
         email: result.user.email,
         img: result.user.photoURL,
       };
-  
+
       // Log the user data to be sent to the backend
       // console.log('User data to be sent to backend:', userData);
-  
-      const response = await axios.post(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/auth/google`, userData);
-  
+
+      const response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/auth/google`,
+        userData
+      );
+
       // Log the response from the backend
       // console.log('Backend response:', response.data);
-  
+
       dispatch(loginSuccess(response.data));
-      
+
       const token = response.data.token;
       localStorage.setItem("access_token", token);
-      navigate("/")
+      navigate("/");
       // Log the image URL from the response
-      console.log('User image URL:', response.data.user.img);
+      console.log("User image URL:", response.data.user.img);
     } catch (error) {
-      console.error('Error during Google sign-in or backend request:', error);
+      console.error("Error during Google sign-in or backend request:", error);
       dispatch(loginFailure());
     }
   };
@@ -141,7 +147,9 @@ const Signin = () => {
           placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button onClick={handleLogin} className="rounded-full">Sign in</Button>
+        <Button onClick={handleLogin} className="rounded-full">
+          Sign in
+        </Button>
         <Title>or</Title>
         <Button onClick={signInWithGoogle}>Signin with Google</Button>
         <Title>or</Title>

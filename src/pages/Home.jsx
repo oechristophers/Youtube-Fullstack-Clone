@@ -4,11 +4,10 @@ import { Card } from "../components/Card";
 import axios from "axios";
 
 const Container = styled.div`
- background-color: ${({ theme }) => theme.bg};
+  background-color: ${({ theme }) => theme.bg};
 `;
 
 export const Home = ({ type, requiresAuth }) => {
- 
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {

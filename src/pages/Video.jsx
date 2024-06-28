@@ -149,7 +149,9 @@ const Video = () => {
           `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/videos/find/${path}`
         );
         const channelRes = await axios.get(
-          `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${videoRes.data.userId}`
+          `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${
+            videoRes.data.userId
+          }`
         );
         setChannel(channelRes.data);
         dispatch(fetchSuccess(videoRes.data));
@@ -168,7 +170,9 @@ const Video = () => {
         config.headers = { Authorization: `Bearer ${token}` };
       }
       await axios.put(
-        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/like/${currentVideo._id}`,
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/like/${
+          currentVideo._id
+        }`,
         {},
         config
       );
@@ -186,7 +190,9 @@ const Video = () => {
         config.headers = { Authorization: `Bearer ${token}` };
       }
       await axios.put(
-        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/dislike/${currentVideo._id}`,
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/dislike/${
+          currentVideo._id
+        }`,
         {},
         config
       );
@@ -206,8 +212,12 @@ const Video = () => {
       const actionUrl =
         currentUser?.subscribedUsers?.includes(channel._id) ||
         currentUser?.user?.subscribedUsers?.includes(channel._id)
-          ? `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/unsub/${channel._id}`
-          : `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/sub/${channel._id}`;
+          ? `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/unsub/${
+              channel._id
+            }`
+          : `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/sub/${
+              channel._id
+            }`;
 
       await axios.put(actionUrl, {}, config);
       dispatch(subscription(channel._id));
@@ -220,14 +230,16 @@ const Video = () => {
     currentUser?.subscribedUsers?.includes(channel._id) ||
     currentUser?.user?.subscribedUsers?.includes(channel._id);
 
-    
-
   return (
     <Container className="lg:flex py-6 ">
       <Content className="mb-4 ">
         <VideoWrapper className=" w-[99vw] md:w-[100%] ml-[-5%] md:ml-[0]">
           {currentVideo ? (
-            <VideoFrame src={currentVideo.videoUrl} controls className="  lg:w-[100%]" />
+            <VideoFrame
+              src={currentVideo.videoUrl}
+              controls
+              className="  lg:w-[100%]"
+            />
           ) : (
             <p>Loading...</p>
           )}
@@ -240,18 +252,25 @@ const Video = () => {
                 <Image src={channel.img} className="" />
                 <ChannelDetail className="">
                   <ChannelName>{channel.name}</ChannelName>
-                  <ChannelCounter>{channel.subscribers} Subscribers</ChannelCounter>
+                  <ChannelCounter>
+                    {channel.subscribers} Subscribers
+                  </ChannelCounter>
                 </ChannelDetail>
               </ChannelInfo>
               {subscribedUsers ? (
-                <Subscribed onClick={handleSub} className="rounded-full">SUBSCRIBED</Subscribed>
+                <Subscribed onClick={handleSub} className="rounded-full">
+                  SUBSCRIBED
+                </Subscribed>
               ) : (
-                <Subscribe onClick={handleSub} className="rounded-full">SUBSCRIBE</Subscribe>
+                <Subscribe onClick={handleSub} className="rounded-full">
+                  SUBSCRIBE
+                </Subscribe>
               )}
               <Buttons>
                 <Button className="rounded-full w-36 justify-center h-10 gap-10">
                   <Button onClick={handleLike} className="">
-                    {currentVideo.likes?.includes(currentUser?._id) || currentVideo.dislikes?.includes(currentUser?.user?._id) ? (
+                    {currentVideo.likes?.includes(currentUser?._id) ||
+                    currentVideo.dislikes?.includes(currentUser?.user?._id) ? (
                       <ThumbUpIcon />
                     ) : (
                       <ThumbUpOutlinedIcon />
@@ -260,7 +279,8 @@ const Video = () => {
                   </Button>
                   <Span className="text-[2.7rem] font-thin pb-1">|</Span>
                   <Button onClick={handleDislike}>
-                    {currentVideo.dislikes?.includes(currentUser?._id) || currentVideo.dislikes?.includes(currentUser?.user?._id) ? (
+                    {currentVideo.dislikes?.includes(currentUser?._id) ||
+                    currentVideo.dislikes?.includes(currentUser?.user?._id) ? (
                       <ThumbDownIcon />
                     ) : (
                       <ThumbDownOffAltOutlinedIcon />
@@ -280,7 +300,9 @@ const Video = () => {
               <Info>
                 {currentVideo.views} views • {format(currentVideo.createdAt)}
               </Info>
-              <Description className=" w-[100%]">{currentVideo.desc}</Description>
+              <Description className=" w-[100%]">
+                {currentVideo.desc}
+              </Description>
             </Details>
             <Hr />
             <Comments videoId={currentVideo._id} />
