@@ -22,25 +22,40 @@ export const userSlice = createSlice({
       state.error = true;
     },
     logout: (state) => {
-      // { return initialState}
       state.currentUser = null;
       state.loading = false;
       state.error = false;
     },
     subscription: (state, action) => {
-      if ((state.currentUser.subscribedUsers || state.currentUser.user?.subscribedUsers).includes(action.payload)) {
-        (state.currentUser.subscribedUsers || state.currentUser.user?.subscribedUsers).splice(
-          (state.currentUser.subscribedUsers || state.currentUser.user?.subscribedUsers).findIndex((channelId) => channelId === action.payload), 
-          1
+      const subscribedUsers =
+        state.currentUser.subscribedUsers ||
+        state.currentUser.user?.subscribedUsers;
+
+      if (subscribedUsers.includes(action.payload)) {
+        const index = subscribedUsers.findIndex(
+          (channelId) => channelId === action.payload
         );
+        subscribedUsers.splice(index, 1);
       } else {
-        (state.currentUser.subscribedUsers || state.currentUser.user?.subscribedUsers).push(action.payload);
+        subscribedUsers.push(action.payload);
       }
-    }
+    },
+    updateUser: (state, action) => {
+      if (state.currentUser) {
+        // Merge updated fields with the existing user object
+        state.currentUser = { ...state.currentUser, ...action.payload };
+      }
+    },
   },
 });
 
-export const { loginFailure, loginStart, loginSuccess, logout, subscription } =
-  userSlice.actions;
+export const {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+  logout,
+  subscription,
+  updateUser,
+} = userSlice.actions;
 
 export default userSlice.reducer;

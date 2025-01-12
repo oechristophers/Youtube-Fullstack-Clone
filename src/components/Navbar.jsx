@@ -10,6 +10,7 @@ import Logout from "./Logout";
 import MenuIcon from "@mui/icons-material/Menu";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useMediaQuery } from "@mui/material";
+import ProfileNav from "./ProfileNav";
 
 const Container = styled.div`
   position: sticky;
@@ -17,6 +18,7 @@ const Container = styled.div`
   background-color: ${({ theme }) => theme.bgLighter};
   padding: 0px 20px;
   height: 56px;
+  z-index: 500;
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -81,19 +83,7 @@ const User = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
-const DropdownMenu = styled.div`
-  position: absolute;
-  top: 60px;
-  right: 0;
-  background-color: ${({ theme }) => theme.bgLighter};
-  border: 1px solid ${({ theme }) => theme.soft};
-  border-radius: 3px;
-  padding: 10px;
-  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
+
 
 // const DropdownItem = styled.button`
 //   padding: 10px;
@@ -252,11 +242,9 @@ export const Navbar = ({handleOpen}) => {
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     style={{ cursor: "pointer" }}
                   />
-                  {currentUser?.name || currentUser?.user?.name}
+                  <section className="hidden lg:block">{currentUser?.name || currentUser?.user?.name}</section>
                   {dropdownOpen && (
-                    <DropdownMenu>
-                      <Logout />
-                    </DropdownMenu>
+                  <ProfileNav/>
                   )}
                 </User>
               ) : (

@@ -22,11 +22,8 @@ import { useSelector } from "react-redux";
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.bgLighter};
-  height: fit-content;
   color: ${({ theme }) => theme.text};
   font-size: 13px;
-  position: sticky;
-  top: 0;
 `;
 const Wrapper = styled.div`
   padding: 18px 26px;
@@ -88,9 +85,9 @@ const Menu = ({ darkMode, setDarkMode, open, handleClose }) => {
 
   
   return (
-    <Container className="">
-      <Wrapper>
-        <div className={` ${open ? 'flex' : 'hidden'}`}>
+    <Container className=" sticky top-0 h-screen">
+      <Wrapper className="transition-all">
+        <div className={` ${open ? 'flex ' : 'hidden'}`}>
       <Link
                 to="/"
                 style={{ textDecoration: "none", color: "inherit" }}

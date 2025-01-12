@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Card } from "../components/Card";
 import axios from "axios";
+import { CardSkeleton } from "../components/CardSkeleton";
 
 const Container = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -9,7 +10,7 @@ const Container = styled.div`
 
 export const Home = ({ type, requiresAuth }) => {
   const [videos, setVideos] = useState([]);
-
+  const skeletonArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   useEffect(() => {
     const fetchVideos = async () => {
       const config = {};
@@ -28,7 +29,11 @@ export const Home = ({ type, requiresAuth }) => {
   }, [type, requiresAuth]);
   return (
     <Container className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 ">
-      {videos.map((video) => (
+      {videos.length === 0 &&
+        skeletonArray.map((i) => (
+        <CardSkeleton/>
+        ))}
+        {videos.map((video) => (
         <Card key={video._id} video={video} className="" />
       ))}
     </Container>
