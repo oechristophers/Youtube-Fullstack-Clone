@@ -8,7 +8,6 @@ export default function Edit() {
   const userId = currentUser?.user?._id || currentUser._id;
   const userName = currentUser?.user?.name || currentUser.name;
   const userEmail = currentUser?.user?.email || currentUser.email;
-  // console.log(currentUser);
   return (
     <div className="text-white ">
       <ProfileForm
