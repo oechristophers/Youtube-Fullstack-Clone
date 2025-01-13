@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
+      - run: yarn install && yarn build
         env:
           VITE_REACT_APP_APIKEY: ${{ secrets.VITE_REACT_APP_APIKEY }}
           VITE_REACT_APP_AUTHDOMAIN: ${{ secrets.VITE_REACT_APP_AUTHDOMAIN }}
