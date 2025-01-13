@@ -9,7 +9,7 @@ import { Home } from "./pages/Home";
 import Signin from "./pages/Signin";
 import Search from "./pages/Search";
 import React from "react";
-import Edit from "./pages/profile/edit";
+import Edit from "./pages/profile/edit.jsx";
 import Channelpage from "./pages/my-channel.jsx";
 
 const Container = styled.div`
