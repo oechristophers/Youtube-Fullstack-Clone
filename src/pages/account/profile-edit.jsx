@@ -10,11 +10,7 @@ export default function Edit() {
   const userEmail = currentUser?.user?.email || currentUser.email;
   return (
     <div className="text-white ">
-      <ProfileForm
-        userId={userId}
-        userEmail={userEmail}
-        userName={userName}
-      />
+      <ProfileForm userId={userId} userEmail={userEmail} userName={userName} />
     </div>
   );
 }

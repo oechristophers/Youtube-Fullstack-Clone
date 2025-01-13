@@ -8,9 +8,9 @@ import Video from "./pages/Video";
 import { Home } from "./pages/Home";
 import Signin from "./pages/Signin";
 import Search from "./pages/Search";
+import Edit from "./pages/account/profile-edit";
 import React from "react";
-import Edit from "./pages/profile/edit.jsx";
-import Channelpage from "./pages/my-channel.jsx";
+import Channelpage from "./pages/my-channel";
 
 const Container = styled.div`
   position: relative;
@@ -110,7 +110,7 @@ const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
             <Route path="search" element={<Search />} />
             <Route path="signin" element={<Signin />} />
             <Route path="video/:id" element={<Video />} />
-            <Route path="profile/edit" element={<Edit />} />
+            <Route path="account/profile-edit" element={<Edit />} />
             <Route path="my-channel" element={<Channelpage />} />
           </Routes>
         </Wrapper>

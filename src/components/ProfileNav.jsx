@@ -21,7 +21,7 @@ export default function ProfileNav() {
     <div>
       <DropdownMenu>
         <a
-          href="/profile/edit"
+          href="/account/profile-edit"
           className="flex gap-5 w-48 hover:bg-[rgba(225,216,216,0.06)] "
         >
           <Edit /> Edit Profile
