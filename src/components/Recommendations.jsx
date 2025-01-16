@@ -4,7 +4,7 @@ import { Card } from './Card';
 import axios from 'axios';
 
 const Container = styled.div`
-  flex: 2;
+  /* flex: 2.9; */
 `;
 
 

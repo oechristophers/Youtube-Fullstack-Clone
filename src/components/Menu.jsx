@@ -21,7 +21,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Container = styled.div`
-  background-color: ${({ theme }) => theme.bgLighter};
+  background-color: ${({ theme }) => theme.bg};
   color: ${({ theme }) => theme.text};
   font-size: 13px;
 `;
@@ -86,7 +86,7 @@ const Menu = ({ darkMode, setDarkMode, open, handleClose }) => {
   
   return (
     <Container className=" sticky top-0 h-screen">
-      <Wrapper className="transition-all">
+      <Wrapper className="transition-all flex flex-col gap-3">
         <div className={` ${open ? 'flex ' : 'hidden'}`}>
       <Link
                 to="/"
@@ -147,48 +147,6 @@ const Menu = ({ darkMode, setDarkMode, open, handleClose }) => {
         <Hr />
         </>}
         
-        <Title> <span className={` ${open ? 'block' : 'hidden'}`}>BEST OF WETUBE</span> </Title>
-        <Item>
-          <LibraryMusicOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Music</span> 
-          
-        </Item>
-        <Item>
-          <SportsBasketballOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Sports</span> 
-          
-        </Item>
-        <Item>
-          <SportsEsportsOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Gaming</span> 
-          
-        </Item>
-        <Item>
-          <MovieOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Movies</span> 
-          
-        </Item>
-        <Item>
-          <ArticleOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>News</span> 
-          
-        </Item>
-        <Item>
-          <LiveTvOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Live</span> 
-          
-        </Item>
-        <Hr />
-        <Item>
-          <SettingsOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Settings</span> 
-          
-        </Item>
-        <Item>
-          <FlagOutlinedIcon />
-          <span className={` ${open ? 'block' : 'hidden'}`}>Report</span> 
-         
-        </Item>
         <Item>
           <HelpOutlineOutlinedIcon />
           <span className={` ${open ? 'block' : 'hidden'}`}>Help</span> 

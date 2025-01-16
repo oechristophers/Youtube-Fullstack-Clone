@@ -13,13 +13,16 @@ import { useNavigate } from "react-router-dom";
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  position: absolute;
+  z-index: 800;
+  position: fixed;
   top: 0;
   right: 0;
   background-color: #000000a7;
   display: flex;
-  align-items: center;
   justify-content: center;
+  @media (min-width: 621px) {
+    position: absolute;
+  }
 `;
 const Wrapper = styled.div`
   width: 600px;
@@ -30,9 +33,11 @@ const Wrapper = styled.div`
   flex-direction: column;
   gap: 20px;
   position: relative;
+  padding: 30px;
 `;
 const Close = styled.div`
   position: absolute;
+  font-size: 2rem ;
   top: 10px;
   right: 10px;
   cursor: pointer;
@@ -154,9 +159,9 @@ export const Upload = ({ setOpen }) => {
   }
 
   return (
-    <Container>
+    <Container className="p-20 md:items-center">
       <Wrapper>
-        <Close onClick={() => setOpen(false)}>X</Close>
+        <Close onClick={() => setOpen(false)}>×</Close>
         <Title>Upload a new Video</Title>
         <Label>Video:</Label>
         {videoPerc > 0 ? (
@@ -185,7 +190,7 @@ export const Upload = ({ setOpen }) => {
           placeholder="Seperate the tags with commas."
           onChange={handleTags}
         />
-        <Label>Image:</Label>
+        <Label>Poster Image:</Label>
         {imgPerc > 0 ? (
           "Uploading:" + imgPerc + "%"
         ) : (

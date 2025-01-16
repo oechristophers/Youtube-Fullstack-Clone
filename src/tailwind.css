@@ -37,4 +37,9 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--scrollbar-thumb-hover-bg);
   }
+  @layer base {
+  :root {
+        --radius: 0.5rem;
+    }
+}
   

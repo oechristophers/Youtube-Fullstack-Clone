@@ -1,15 +1,14 @@
-import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components';
-import {format} from 'timeago.js';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import styled from "styled-components";
+import { format } from "timeago.js";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const Container = styled.div`
-    display: flex;
-    gap: 10px;
-    margin: 30px 0px;
-`
+  display: flex;
+  gap: 10px;
+  margin: 30px 0px;
+`;
 const Avatar = styled.img`
   width: 38px;
   height: 38px;
@@ -17,33 +16,32 @@ const Avatar = styled.img`
 `;
 
 const Details = styled.div`
-display: flex;
-flex-direction: column;
-gap: 1px;
-color:${({ theme }) => theme.text};
-`
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  color: ${({ theme }) => theme.text};
+`;
 const Name = styled.div`
-font-size: 12px;
-font-weight: 500;
-`
+  font-size: 12px;
+  font-weight: 500;
+`;
 const Date = styled.div`
-font-size: 11px;
-font-weight: 400;
-color:${({ theme }) => theme.textSoft} ;
-margin-left: 5px;
-`
+  font-size: 11px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.textSoft};
+  margin-left: 5px;
+`;
 const Text = styled.div`
-font-size: 14px;
-`
+  font-size: 14px;
+`;
 
 const Button = styled.button`
-position: relative;
-`
-
+  position: relative;
+`;
 
 const StyledMoreButton = styled(MoreVertIcon)`
-color:${({ theme }) => theme.textSoft};
-`
+  color: ${({ theme }) => theme.textSoft};
+`;
 const DropdownMenu = styled.div`
   position: absolute;
   top: 60px;
@@ -86,8 +84,12 @@ const Comment = ({ comment, currentUser, comments, setComments }) => {
 
   useEffect(() => {
     const fetchComment = async () => {
-      const res = await axios.get(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${comment.userId}`);
-      setChannel(res.data)
+      const res = await axios.get(
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/users/find/${
+          comment.userId
+        }`
+      );
+      setChannel(res.data);
     };
     fetchComment();
   }, [comment.userId]);
@@ -108,7 +110,7 @@ const Comment = ({ comment, currentUser, comments, setComments }) => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [dropdownOpen]);
-  
+
   const handleDelete = async () => {
     try {
       const config = {
@@ -116,37 +118,41 @@ const Comment = ({ comment, currentUser, comments, setComments }) => {
       };
       setAuthToken(config);
 
-      await axios.delete(`${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/comments/${comment._id}`, config);
+      await axios.delete(
+        `${import.meta.env.VITE_REACT_APP_SERVER_URL}/api/comments/${
+          comment._id
+        }`,
+        config
+      );
       // Filter out the deleted comment from comments state
       const updatedComments = comments.filter((c) => c._id !== comment._id);
       setComments(updatedComments);
     } catch (err) {
-      console.error('Error deleting comment:', err);
+      console.error("Error deleting comment:", err);
     }
   };
   return (
     <Container>
-        <Avatar src={channel.img}/>
-        <Details>
-            <Name className='flex'>{channel.name} <Date>{format(comment.createdAt)}</Date></Name>
-            <Text className=''>
-               {comment.desc}
-            </Text>
-        </Details>
+      <Avatar src={channel.img} />
+      <Details>
+        <Name className="flex">
+          {channel.name} <Date>{format(comment.createdAt)}</Date>
+        </Name>
+        <Text className="">{comment.desc}</Text>
+      </Details>
 
-        {currentUser?._id ||currentUser?.user?.id &&
-      <Button className='pb-2 ml-auto' ref={dropdownRef}>
-        <StyledMoreButton onClick={() => setDropdownOpen((prev) => !prev)} />
-        {dropdownOpen && (
-                    <DropdownMenu className='z-30'>
-                      <DropdownItem onClick={handleDelete}>
-                      Delete
-                      </DropdownItem>
-                    </DropdownMenu>
-                  )}
-      </Button>}
+      {currentUser?._id === comment.userId && (
+        <Button className="pb-2 ml-auto" ref={dropdownRef}>
+          <StyledMoreButton onClick={() => setDropdownOpen((prev) => !prev)} />
+          {dropdownOpen && (
+            <DropdownMenu className="z-30">
+              <DropdownItem onClick={handleDelete}>Delete</DropdownItem>
+            </DropdownMenu>
+          )}
+        </Button>
+      )}
     </Container>
-  )
-}
+  );
+};
 
-export default Comment
+export default Comment;

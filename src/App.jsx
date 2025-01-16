@@ -26,9 +26,9 @@ const Wrapper = styled.div`
   flex: 7;
   background-color: ${({ theme }) => theme.bg};
 
-  @media screen and (min-width: 770px) {
+  /* @media screen and (min-width: 770px) {
     padding-left: 100px;
-  }
+  } */
 `;
 
 function App() {
@@ -73,7 +73,7 @@ const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
   return (
     <>
       <div
-        className={`w-[fit-content] max-h-screen fixed overflow-y-scroll z-30  ${
+        className={`w-[fit-content]  fixed z-30  ${
           open ? "block" : "hidden"
         }  `}
       >
@@ -83,7 +83,7 @@ const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
           handleClose={handleClose}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
-          className="h-max"
+          className="h-max "
         />
       </div>
 
@@ -92,7 +92,7 @@ const Content = ({ darkMode, setDarkMode, open, handleOpen, setOpen }) => {
       <Main className="md:flex  min-h-screen ">
         {shouldShowNav && (
           <div
-            className={`w-[fit-content] md:fixed overflow-y-scroll hidden   ${
+            className={`w-[fit-content] md:fixed  hidden   ${
               open ? "md:hidden" : "md:block"
             }`}
           >

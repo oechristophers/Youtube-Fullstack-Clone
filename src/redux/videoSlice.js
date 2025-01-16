@@ -41,7 +41,12 @@ export const videoSlice = createSlice({
         }
       }
     },
-  
+    updateVideo: (state, action) => {
+      if (state.currentVideo) {
+        // Merge updated fields with the existing user object
+        state.currentVideo = { ...state.currentVideo, ...action.payload };
+      }
+    },
   },
 });
 

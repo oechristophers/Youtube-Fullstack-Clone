@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 
 const Container = styled.div`
+button{
+  border-bottom: 1px solid ${({ theme }) => theme.soft};
+}
 `;
 
 const NewComment = styled.div`
@@ -87,12 +90,13 @@ const Comments = ({ videoId }) => {
     <Container>
       <NewComment>
         <Avatar src={currentUser?.img ||currentUser?.user?.img} />
-        <form onSubmit={handleCommentSubmit} style={{ width: '100%' }}>
+        <form onSubmit={handleCommentSubmit} style={{ width: '100%', display:'flex' }}>
           <Input
             placeholder="Add a comment..."
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
           />
+          <button type="submit" className="text-white">Send</button>
         </form>
       </NewComment>
       {comments.map((comment) => (

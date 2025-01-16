@@ -30,8 +30,7 @@ export default function Channelpage() {
   const userId = currentUser?._id || currentUser?.user?._id;
   const userImg = currentUser?.img || currentUser?.user?.img;
   const userName = currentUser?.name || currentUser?.user?.name;
-  const userSubs =
-    currentUser?.subscribers || currentUser?.user?.subscribers || 0;
+  const userSubs = currentUser?.subscribers || currentUser?.user?.subscribers || 0;
   // console.log("Subscribers", userSubs);
   // console.log(currentUser);
   return (

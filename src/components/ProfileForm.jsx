@@ -9,6 +9,7 @@ import {
 } from "firebase/storage";
 import { useDispatch } from "react-redux";
 import { updateUser } from "../redux/userSlice"; // Adjust the import path as needed
+import { uploadToFirebase } from "../lib/uploadFunction";
 
 const Input = styled.input`
   background-color: ${({ theme }) => theme.bgLighter};
@@ -40,30 +41,7 @@ const ProfileForm = ({ userId, userName, userEmail }) => {
     }
   };
 
-  const uploadToFirebase = async (file) => {
-    const storageRef = ref(storage, `profile_pics/${userId}/${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
-    return new Promise((resolve, reject) => {
-      uploadTask.on(
-        "state_changed",
-        (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-          console.log(`Upload is ${progress}% done`);
-        },
-        (error) => {
-          console.error("Error uploading file:", error);
-          reject(error);
-        },
-        async () => {
-          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-          resolve(downloadURL);
-        }
-      );
-    });
-  };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
   
@@ -74,10 +52,11 @@ const ProfileForm = ({ userId, userName, userEmail }) => {
   
       // Upload profilePic to Firebase if it's a File
       if (profilePic instanceof File) {
-        profilePicUrl = await uploadToFirebase(profilePic);
+        profilePicUrl = await uploadToFirebase(app, userId, profilePic);
         console.log("Profile picture URL:", profilePicUrl);
       }
   
+      
       // Prepare data for the backend
       const updatedData = {
         ...formData,

@@ -8,13 +8,13 @@ import { useSelector } from "react-redux";
 import { Upload } from "./Upload";
 import Logout from "./Logout";
 import MenuIcon from "@mui/icons-material/Menu";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useMediaQuery } from "@mui/material";
 import ProfileNav from "./ProfileNav";
 
 const Container = styled.div`
   position: sticky;
-  top: 0;
+  top: -1px;
   background-color: ${({ theme }) => theme.bgLighter};
   padding: 0px 20px;
   height: 56px;
@@ -83,8 +83,6 @@ const User = styled.div`
   color: ${({ theme }) => theme.text};
 `;
 
-
-
 // const DropdownItem = styled.button`
 //   padding: 10px;
 //   background: none;
@@ -106,7 +104,7 @@ const Avatar = styled.img`
 `;
 const StyledSearchIcon = styled(SearchOutlinedIcon)`
   cursor: pointer;
- 
+
   width: 15%;
   height: inherit;
   font-size: 1.6 !important; // Added !important to override any default styles
@@ -115,8 +113,8 @@ const StyledMenuIcon = styled(MenuIcon)`
   color: ${({ theme }) => theme.text};
 `;
 const StyledSearchIcon2 = styled(SearchOutlinedIcon)`
-font-size: 2 !important;
-color: ${({ theme }) => theme.textSoft};
+  font-size: 2 !important;
+  color: ${({ theme }) => theme.textSoft};
 `;
 const StyledArrowBackIcon = styled(ArrowBackIcon)`
   font-size: 2 !important;
@@ -127,11 +125,11 @@ const StyledArrowBackIcon = styled(ArrowBackIcon)`
 `;
 
 const IconButton = styled.button`
-  border-radius:16px;
-  padding:4px;
-`
+  border-radius: 16px;
+  padding: 4px;
+`;
 
-export const Navbar = ({handleOpen}) => {
+export const Navbar = ({ handleOpen }) => {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
   // console.log(currentUser.image);
@@ -140,13 +138,13 @@ export const Navbar = ({handleOpen}) => {
   const [q, setQ] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
-  const isSmallScreen = useMediaQuery('(max-width:600px)');
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
   const [searchView, setSearchView] = useState(false);
   const handleSearch = () => {
     if (q.trim()) {
       navigate(`/search?q=${q}`);
     }
-    setSearchView(false)
+    setSearchView(false);
   };
 
   // Function to handle key press events
@@ -188,17 +186,18 @@ export const Navbar = ({handleOpen}) => {
         <Wrapper>
           {searchView ? (
             <>
-            <StyledArrowBackIcon onClick={() => setSearchView(false)} />
-            <Search className="w-full">
-              <Input
-                placeholder="Search"
-                onChange={(e) => setQ(e.target.value)}
-                autoFocus
-              />
-              <div className="w-[15%] bg-[#343536] h-[inherit] rounded-[13px] rounded-l-none sm:pl-3 pl-1 pt-1"> <StyledSearchIcon
-                    onClick={handleSearch}
-                  /></div>
-            </Search>
+              <StyledArrowBackIcon onClick={() => setSearchView(false)} />
+              <Search className="w-full">
+                <Input
+                  placeholder="Search"
+                  onChange={(e) => setQ(e.target.value)}
+                  autoFocus
+                />
+                <div className="w-[15%] bg-[#343536] h-[inherit] rounded-[13px] rounded-l-none sm:pl-3 pl-1 pt-1">
+                  {" "}
+                  <StyledSearchIcon onClick={handleSearch} />
+                </div>
+              </Search>
             </>
           ) : (
             <>
@@ -228,10 +227,10 @@ export const Navbar = ({handleOpen}) => {
                     placeholder="Search"
                     onChange={(e) => setQ(e.target.value)}
                   />
-                  <div className="w-[15%] bg-[#343536] h-[inherit] rounded-[13px] rounded-l-none pl-3 pt-1"> <StyledSearchIcon
-                    onClick={handleSearch}
-                  /></div>
-                 
+                  <div className="w-[15%] bg-[#343536] h-[inherit] rounded-[13px] rounded-l-none pl-3 pt-1">
+                    {" "}
+                    <StyledSearchIcon onClick={handleSearch} />
+                  </div>
                 </Search>
               )}
               {currentUser ? (
@@ -242,10 +241,10 @@ export const Navbar = ({handleOpen}) => {
                     onClick={() => setDropdownOpen((prev) => !prev)}
                     style={{ cursor: "pointer" }}
                   />
-                  <section className="hidden lg:block">{currentUser?.name || currentUser?.user?.name}</section>
-                  {dropdownOpen && (
-                  <ProfileNav/>
-                  )}
+                  <section className="hidden lg:block">
+                    {currentUser?.name || currentUser?.user?.name}
+                  </section>
+                  {dropdownOpen && <ProfileNav />}
                 </User>
               ) : (
                 <Link to="signin" style={{ textDecoration: "none" }}>
